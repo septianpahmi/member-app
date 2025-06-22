@@ -6,12 +6,14 @@
       "use": "@vercel/node"
     }
   ],
+  
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "src/backend/api/membership.js"
     }
   ],
+  
   "rewrites": [
     {
       "source": "/api/:path*",
