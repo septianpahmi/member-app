@@ -5,4 +5,17 @@
       "destination": "/api/:path*"
     }
   ]
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/backend/api/membership.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "src/backend/api/membership.js"
+    }
+  ]
 }
