@@ -36,7 +36,7 @@ const MemberScan = () => {
       );
 
       const res = await axios.post(
-        "http://localhost:3000/api/membership/check",
+        "https://memberapp-alharamain.vercel.app/api/membership/check",
         {
           barcode: memberInfo.member_id,
         }
@@ -55,7 +55,7 @@ const MemberScan = () => {
       );
 
       const res = await axios.post(
-        "http://localhost:3000/api/membership/check",
+        "https://memberapp-alharamain.vercel.app/api/membership/check",
         {
           barcode: memberInfo.member_id,
         }
