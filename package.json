@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "vite preview"
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -22,6 +23,7 @@
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2",
     "sqlite3": "^5.1.7"
+    
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
