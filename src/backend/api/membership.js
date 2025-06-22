@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // Cek member dari barcode
-app.post("https://memberapp-alharamain.vercel.app/api/membership/check", async (req, res) => {
+app.post("/api/membership/check", async (req, res) => {
   const { barcode } = req.body;
   try {
     const [rows] = await pool.query(
@@ -28,7 +28,7 @@ app.post("https://memberapp-alharamain.vercel.app/api/membership/check", async (
 });
 
 // Ambil semua data member
-app.get("https://memberapp-alharamain.vercel.app/api/membership/list", async (req, res) => {
+app.get("/api/membership/list", async (req, res) => {
   try {
     const [rows] = await pool.query("SELECT * FROM members");
     res.json(rows);
@@ -39,7 +39,7 @@ app.get("https://memberapp-alharamain.vercel.app/api/membership/list", async (re
 });
 
 // Tambah member
-app.post("https://memberapp-alharamain.vercel.app/api/membership/add", async (req, res) => {
+app.post("/api/membership/add", async (req, res) => {
   const { member_id, name, email, phone, point } = req.body;
 
   try {
@@ -64,7 +64,7 @@ app.post("https://memberapp-alharamain.vercel.app/api/membership/add", async (re
 });
 
 // Update member
-app.put("https://memberapp-alharamain.vercel.app/api/membership/update/:id", async (req, res) => {
+app.put("/api/membership/update/:id", async (req, res) => {
   const { name, email, phone } = req.body;
   try {
     await pool.query(
@@ -79,7 +79,7 @@ app.put("https://memberapp-alharamain.vercel.app/api/membership/update/:id", asy
 });
 
 // Hapus member
-app.delete("https://memberapp-alharamain.vercel.app/api/membership/delete/:id", async (req, res) => {
+app.delete("/api/membership/delete/:id", async (req, res) => {
   try {
     await pool.query(`DELETE FROM members WHERE member_id = $1`, [
       req.params.id,
@@ -91,7 +91,7 @@ app.delete("https://memberapp-alharamain.vercel.app/api/membership/delete/:id", 
   }
 });
 // Tambah 1 point ke member
-app.put("https://memberapp-alharamain.vercel.app/api/membership/add-point/:id", async (req, res) => {
+app.put("/api/membership/add-point/:id", async (req, res) => {
   try {
     await pool.query(
       `UPDATE members SET point = point + 1 WHERE member_id = $1`,
@@ -105,7 +105,7 @@ app.put("https://memberapp-alharamain.vercel.app/api/membership/add-point/:id", 
 });
 
 // Reset point ke 0
-app.put("https://memberapp-alharamain.vercel.app/api/membership/reset-point/:id", async (req, res) => {
+app.put("/api/membership/reset-point/:id", async (req, res) => {
   try {
     await pool.query(`UPDATE members SET point = 0 WHERE member_id = $1`, [
       req.params.id,
