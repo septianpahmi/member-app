@@ -116,8 +116,5 @@ app.put("/api/membership/reset-point/:id", async (req, res) => {
     res.status(500).json({ error: "Gagal reset point" });
   }
 });
-app.get("/api/membership/ping", (req, res) => {
-  res.json({ message: "Ping OK" });
-});
 
-export default serverless(app);
+export const handler = serverless(app);
