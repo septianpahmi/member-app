@@ -20,7 +20,7 @@ const MemberPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const fetchMembers = async () => {
     try {
-      await axios.get("https://memberapp-alharamain.vercel.app/membership/list");
+      await axios.get("https://memberapp-alharamain.vercel.app/api/membership/list");
       setMembers(res.data);
     } catch (err) {
       console.error("Gagal fetch member:", err);
@@ -63,12 +63,12 @@ const MemberPage = () => {
     try {
       if (editingMember) {
         await axios.put(
-          `https://memberapp-alharamain.vercel.app/membership/update/${formData.member_id}`,
+          `https://memberapp-alharamain.vercel.app/api/membership/update/${formData.member_id}`,
           formData
         );
       } else {
         try {
-          await axios.post("https://memberapp-alharamain.vercel.app/membership/add", {
+          await axios.post("https://memberapp-alharamain.vercel.app/api/membership/add", {
             ...formData,
             point: Number(formData.point) || 0,
           });
@@ -98,7 +98,7 @@ const MemberPage = () => {
   const confirmDelete = async () => {
     try {
       await axios.delete(
-        `https://memberapp-alharamain.vercel.app/membership/delete/${memberToDelete}`
+        `https://memberapp-alharamain.vercel.app/api/membership/delete/${memberToDelete}`
       );
       setShowConfirmModal(false);
       setMemberToDelete(null);
