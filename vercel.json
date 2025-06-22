@@ -1,13 +1,13 @@
 {
   "functions": {
-    "src/backend/api/*.js": {
+    "src/backend/api/membership.js": {
       "runtime": "nodejs20.x"
     }
   },
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "/src/backend/api/:path*"
+      "destination": "/src/backend/api/membership.js"
     }
   ]
 }
