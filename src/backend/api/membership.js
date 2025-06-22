@@ -68,7 +68,7 @@ app.put("/api/membership/update/:id", async (req, res) => {
   const { name, email, phone } = req.body;
   try {
     await pool.query(
-      `UPDATE members SET name = ?, email = ?, phone = ? WHERE member_id = ?`,
+      `UPDATE members SET name = ?, email = ?, phone = ? WHERE member_id = $1`,
       [name, email, phone, req.params.id]
     );
     res.json({ success: true });
