@@ -14,7 +14,7 @@ const MemberScan = () => {
         return;
       }
       const res = await axios.post(
-        "http://localhost:3000/api/membership/check",
+        "https://memberapp-alharamain.vercel.app/api/membership/check",
         {
           barcode: memberId.trim(),
         }
@@ -32,7 +32,7 @@ const MemberScan = () => {
   const handleAddPoint = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/api/membership/add-point/${memberInfo.member_id}`
+        `https://memberapp-alharamain.vercel.app/api/membership/add-point/${memberInfo.member_id}`
       );
 
       const res = await axios.post(
@@ -51,7 +51,7 @@ const MemberScan = () => {
   const handleResetPoint = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/api/membership/reset-point/${memberInfo.member_id}`
+        `https://memberapp-alharamain.vercel.app/api/membership/reset-point/${memberInfo.member_id}`
       );
 
       const res = await axios.post(
