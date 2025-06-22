@@ -1,12 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "src/backend/api/membership.js",
-      "use": "@vercel/node"
-    }
-  ],
-  
   "routes": [
     {
       "src": "/api/(.*)",
