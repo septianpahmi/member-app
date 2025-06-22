@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import serverless from "serverless-http";
-import { pool } from "../db.js";
+import { pool } from "./db.js";
 
 const app = express();
 app.use(cors());
