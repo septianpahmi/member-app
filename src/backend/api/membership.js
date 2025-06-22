@@ -116,6 +116,8 @@ app.put("/api/membership/reset-point/:id", async (req, res) => {
     res.status(500).json({ error: "Gagal reset point" });
   }
 });
-app.listen(3000, () => console.log("Server running on port 3000"));
+app.get("/api/membership/ping", (req, res) => {
+  res.json({ message: "Ping OK" });
+});
 
-export const handler = serverless(app);
+export default serverless(app);
