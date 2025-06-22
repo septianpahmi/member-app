@@ -1,10 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
-    }
-  ]
   "version": 2,
   "builds": [
     {
@@ -17,5 +11,12 @@
       "src": "/api/(.*)",
       "dest": "src/backend/api/membership.js"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    }
   ]
+  
 }
