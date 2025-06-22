@@ -20,7 +20,7 @@ const MemberPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const fetchMembers = async () => {
     try {
-      const res = await axios.get("https://memberapp-alharamain.vercel.app/api/membership/list");
+      await axios.get("https://memberapp-alharamain.vercel.app/api/membership/list");
       setMembers(res.data);
     } catch (err) {
       console.error("Gagal fetch member:", err);
