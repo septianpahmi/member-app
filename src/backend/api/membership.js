@@ -44,7 +44,7 @@ app.post("/api/membership/add", async (req, res) => {
 
   try {
     const [check] = await pool.query(
-      "SELECT COUNT(*) AS count FROM members WHERE member_id = ?",
+      "SELECT COUNT(*) AS count FROM members WHERE member_id = $1",
       [member_id]
     );
     if (check[0].count > 0) {
@@ -68,7 +68,7 @@ app.put("/api/membership/update/:id", async (req, res) => {
   const { name, email, phone } = req.body;
   try {
     await pool.query(
-      `UPDATE members SET name = ?, email = ?, phone = ? WHERE member_id = $1`,
+      `UPDATE members SET name = $1, email = $2, phone = $3 WHERE member_id = $4`,
       [name, email, phone, req.params.id]
     );
     res.json({ success: true });
@@ -81,7 +81,7 @@ app.put("/api/membership/update/:id", async (req, res) => {
 // Hapus member
 app.delete("/api/membership/delete/:id", async (req, res) => {
   try {
-    await pool.query(`DELETE FROM members WHERE member_id = ?`, [
+    await pool.query(`DELETE FROM members WHERE member_id = $1`, [
       req.params.id,
     ]);
     res.json({ success: true });
@@ -94,7 +94,7 @@ app.delete("/api/membership/delete/:id", async (req, res) => {
 app.put("/api/membership/add-point/:id", async (req, res) => {
   try {
     await pool.query(
-      `UPDATE members SET point = point + 1 WHERE member_id = ?`,
+      `UPDATE members SET point = point + 1 WHERE member_id = $1`,
       [req.params.id]
     );
     res.json({ success: true });
@@ -107,7 +107,7 @@ app.put("/api/membership/add-point/:id", async (req, res) => {
 // Reset point ke 0
 app.put("/api/membership/reset-point/:id", async (req, res) => {
   try {
-    await pool.query(`UPDATE members SET point = 0 WHERE member_id = ?`, [
+    await pool.query(`UPDATE members SET point = 0 WHERE member_id = $1`, [
       req.params.id,
     ]);
     res.json({ success: true });
